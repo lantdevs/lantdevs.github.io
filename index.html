@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Particles canvas -->
   <canvas id="particles"></canvas>
 
   <!-- Sidebar -->
@@ -43,44 +42,50 @@
         <h3>Discord Bot</h3>
         <p>Languages: JavaScript, Python</p>
         <p class="price">€12.99</p>
-        <input type="text" placeholder="Your Discord username" class="contact-input" id="discordBotUser">
-        <button class="buy-btn" onclick="buy('Discord Bot', '12.99', 'discordBotUser')">Buy Now</button>
+        <button class="buy-btn" onclick="openModal('Discord Bot','12.99')">Buy Now</button>
       </div>
 
       <div class="service-card">
         <h3>Game Script</h3>
         <p>Languages: Python, C++</p>
         <p class="price">€15.00</p>
-        <input type="text" placeholder="Your Discord username" class="contact-input" id="gameScriptUser">
-        <button class="buy-btn" onclick="buy('Game Script', '15.00', 'gameScriptUser')">Buy Now</button>
+        <button class="buy-btn" onclick="openModal('Game Script','15.00')">Buy Now</button>
       </div>
 
       <div class="service-card">
         <h3>Random Script</h3>
         <p>Languages: Python, JS</p>
         <p class="price">€11.00</p>
-        <input type="text" placeholder="Your Discord username" class="contact-input" id="randomScriptUser">
-        <button class="buy-btn" onclick="buy('Random Script', '11.00', 'randomScriptUser')">Buy Now</button>
+        <button class="buy-btn" onclick="openModal('Random Script','11.00')">Buy Now</button>
       </div>
 
       <div class="service-card">
         <h3>Hire Me (Full-time)</h3>
         <p>Languages: Any</p>
         <p class="price">€70.00</p>
-        <input type="text" placeholder="Your Discord username" class="contact-input" id="hireFullUser">
-        <button class="buy-btn" onclick="buy('Hire Me (Full-time)', '70.00', 'hireFullUser')">Buy Now</button>
+        <button class="buy-btn" onclick="openModal('Hire Me (Full-time)','70.00')">Buy Now</button>
       </div>
 
       <div class="service-card">
         <h3>Hire Me (Part-time)</h3>
         <p>Languages: Any</p>
         <p class="price">€40.00</p>
-        <input type="text" placeholder="Your Discord username" class="contact-input" id="hirePartUser">
-        <button class="buy-btn" onclick="buy('Hire Me (Part-time)', '40.00', 'hirePartUser')">Buy Now</button>
+        <button class="buy-btn" onclick="openModal('Hire Me (Part-time)','40.00')">Buy Now</button>
       </div>
 
     </section>
   </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-service">Service</h2>
+      <p>Enter your Discord username or contact info:</p>
+      <input type="text" id="user-contact" placeholder="Your Discord username">
+      <button id="modal-buy-btn">Proceed to PayPal</button>
+    </div>
+  </div>
 
   <div class="cursor"></div>
   <script src="script.js"></script>
