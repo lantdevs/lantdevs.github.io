@@ -26,12 +26,23 @@ body {
   overflow-y: auto;
 }
 
+.pfp-container {
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(45deg, #ff0000, #ff4c4c, #ff0000);
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.pfp-container:hover {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
 .profile-pic {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 3px solid #fff;
-  margin-bottom: 20px;
 }
 
 .sidebar h1 {
@@ -52,15 +63,15 @@ body {
   text-align: center;
 }
 
-.about p, .contact-card p {
+.about p {
   font-size: 0.9rem;
   text-align: center;
   line-height: 1.4;
 }
 
-/* Contact card */
+/* Contact card with different red shade */
 .contact-card {
-  background: linear-gradient(135deg, rgba(255,0,0,0.3), rgba(255,76,76,0.2));
+  background: linear-gradient(135deg, rgba(255,50,50,0.4), rgba(255,100,100,0.25));
   backdrop-filter: blur(15px);
   padding: 20px 25px;
   border-radius: 15px;
@@ -71,7 +82,13 @@ body {
 
 .contact-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px #ff0000;
+  box-shadow: 0 0 25px #ff4c4c;
+}
+
+.contact-card p {
+  margin: 10px 0;
+  font-size: 1rem;
+  text-align: center;
 }
 
 /* Main content */
@@ -81,12 +98,12 @@ body {
   overflow-y: auto;
 }
 
-/* Services section */
+/* Services section with full-line cards */
 .services {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 30px;
-  justify-content: center;
+  align-items: center;
 }
 
 .services h2 {
@@ -102,14 +119,15 @@ body {
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 25px;
-  width: 250px;
+  width: 80%;
+  max-width: 600px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px #ff0000;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #ff0000;
 }
 
 .service-card h3 {
