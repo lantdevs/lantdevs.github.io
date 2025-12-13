@@ -1,4 +1,4 @@
-/* Reset and base */
+/* Reset & base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Arial', sans-serif;
@@ -21,23 +21,30 @@ body {
   position: fixed;
   width: 300px;
   height: 100%;
-  background: linear-gradient(180deg, #2b0d0d, #4b0f0f);
+  background: rgba(43, 13, 13, 0.8);
+  backdrop-filter: blur(10px);
   padding: 30px;
   text-align: center;
   overflow-y: auto;
+  border-right: 2px solid #ff1a1a;
+  box-shadow: 0 0 30px #ff1a1a33;
+}
+
+.profile-container {
+  margin-bottom: 30px;
 }
 
 .profile-pic {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border: 3px solid #ff1a1a;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .profile-pic:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 50px #ff1a1aaa, 0 0 80px #ff4d4d55;
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 0 50px #ff1a1aaa, 0 0 100px #ff4d4d88;
 }
 
 .sidebar h1 {
@@ -49,14 +56,14 @@ body {
 
 .typing {
   font-size: 0.95rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: #fff;
   border-right: 2px solid #ff1a1a;
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* About section under pic */
+/* About section under profile */
 .about-sidebar h2 { 
   color: #ff1a1a; 
   margin-bottom: 10px; 
@@ -70,9 +77,9 @@ body {
 }
 
 /* Pricing section */
-.pricing h2 { 
-  font-size: 2.5rem; 
-  margin-bottom: 40px; 
+.pricing h2 {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
   text-align: center;
   background: linear-gradient(90deg,#ff1a1a,#ff4d4d,#ff1a1a);
   -webkit-background-clip: text;
@@ -82,22 +89,21 @@ body {
 .pricing-cards {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 40px;
 }
 
 .pricing-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 60px;
+  padding: 50px;
   background: linear-gradient(145deg, #2b0d0d, #3a0e0e);
-  color: #fff;
   border-radius: 20px;
   font-size: 1.8rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
+  border: 2px solid #ff1a1a33;
 }
 
 .pricing-card::before {
@@ -113,20 +119,45 @@ body {
 }
 
 .pricing-card:hover::before {
-  width: 600px; height: 600px;
+  width: 700px; height: 700px;
 }
 
 .pricing-card:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 60px #ff1a1aaa, 0 0 90px #ff4d4d55;
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 0 80px #ff1a1aaa, 0 0 120px #ff4d4d55;
 }
 
-.pricing-card span { position: relative; z-index: 2; transition: color 0.3s; }
-.pricing-card span.service:hover { color: #fff; }
+.pricing-card span {
+  position: relative;
+  z-index: 2;
+}
+.pricing-card span.service {
+  font-weight: bold;
+  font-size: 1.9rem;
+}
+.pricing-card span.price {
+  font-size: 2rem;
+  color: #ff1a1a;
+}
 
-/* Fade-in animation for cards */
-.pricing-card { opacity: 0; transform: translateY(20px); animation: fadeIn 1s forwards; }
-@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+/* Buy button */
+.buy-btn {
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  border: 2px solid #ff1a1a;
+  border-radius: 10px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s;
+}
+.buy-btn:hover {
+  background: #ff1a1a;
+  color: #fff;
+  box-shadow: 0 0 20px #ff1a1aaa, 0 0 30px #ff4d4d55;
+  transform: scale(1.1);
+}
 
 /* Contact section */
 .contact h2 { 
