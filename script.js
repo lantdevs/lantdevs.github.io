@@ -21,7 +21,7 @@ function typeText(el) {
 }
 document.querySelectorAll('.typing').forEach(el => typeText(el));
 
-// Animated gradient particles
+// Red-themed particles
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -37,7 +37,10 @@ class Particle {
     this.radius = Math.random() * 3 + 1;
     this.speedX = (Math.random() - 0.5) * 1.5;
     this.speedY = (Math.random() - 0.5) * 1.5;
-    this.color = `hsl(${Math.random()*360}, 100%, 50%)`;
+    const r = Math.floor(Math.random()*255);
+    const g = Math.floor(Math.random()*50);
+    const b = Math.floor(Math.random()*50);
+    this.color = `rgba(${r},${g},${b},0.8)`;
   }
   update() {
     this.x += this.speedX;
