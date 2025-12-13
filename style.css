@@ -15,48 +15,74 @@ body {
   position: relative;
 }
 
-/* Sidebar */
+/* Animated gradient text */
+.animated-gradient {
+  background: linear-gradient(45deg, #ff0000, #ff4c4c, #ff8080, #ff1f1f);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 5s ease infinite;
+}
+
+@keyframes textGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Sidebar with animated gradient */
 .sidebar {
   width: 280px;
-  background: linear-gradient(180deg, #ff1f1f, #800000);
   padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
+  background: linear-gradient(270deg, #ff1f1f, #ff4c4c, #800000, #ff1f1f);
+  background-size: 800% 800%;
+  animation: gradientAnimation 15s ease infinite;
+  border-radius: 0 20px 20px 0;
 }
 
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Profile picture hover gradient outline */
 .pfp-container {
   border-radius: 50%;
-  padding: 5px;
-  background: linear-gradient(45deg, #ff0000, #ff4c4c, #ff0000);
+  padding: 6px;
+  background: linear-gradient(45deg, #ff0000, #ff4c4c, #ff8080, #ff1f1f, #ff0000);
+  background-size: 400% 400%;
+  animation: pfpGradient 8s ease infinite;
   display: inline-block;
   transition: all 0.3s ease;
 }
 
+@keyframes pfpGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .pfp-container:hover {
-  filter: brightness(1.2);
-  transform: scale(1.05);
+  filter: brightness(1.3);
+  transform: scale(1.08);
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
 }
 
-.sidebar h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+.sidebar h1, .sidebar p {
   text-align: center;
 }
 
-.sidebar p {
-  font-size: 0.95rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
+/* About section */
 .about h2, .contact h2 {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -64,17 +90,17 @@ body {
 }
 
 .about p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   text-align: center;
   line-height: 1.4;
 }
 
-/* Contact card with different red shade */
+/* Contact card with darker red background */
 .contact-card {
-  background: linear-gradient(135deg, rgba(255,50,50,0.4), rgba(255,100,100,0.25));
-  backdrop-filter: blur(15px);
-  padding: 20px 25px;
-  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(120,0,0,0.7), rgba(180,0,0,0.5));
+  backdrop-filter: blur(18px);
+  padding: 25px;
+  border-radius: 20px;
   width: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-top: 10px;
@@ -82,7 +108,7 @@ body {
 
 .contact-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px #ff4c4c;
+  box-shadow: 0 0 30px #ff4c4c;
 }
 
 .contact-card p {
@@ -98,11 +124,11 @@ body {
   overflow-y: auto;
 }
 
-/* Services section with full-line cards */
+/* Services section with long vertical cards */
 .services {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 45px;
   align-items: center;
 }
 
@@ -111,44 +137,44 @@ body {
   text-align: center;
   margin-bottom: 30px;
   font-size: 2rem;
-  color: #ff4c4c;
 }
 
 .service-card {
-  background: rgba(255, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 25px;
-  width: 80%;
-  max-width: 600px;
+  background: rgba(255, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 45px 30px;
+  width: 85%;
+  max-width: 700px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px #ff0000;
+  transform: scale(1.07);
+  box-shadow: 0 0 40px #ff4c4c;
 }
 
 .service-card h3 {
-  margin-bottom: 10px;
-  font-size: 1.3rem;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
 }
 
 .service-card p {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 1.15rem;
 }
 
 .price {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 25px;
   background: #ff0000;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   color: white;
   cursor: pointer;
   transition: background 0.3s ease;
