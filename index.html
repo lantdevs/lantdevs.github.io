@@ -1,232 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Liped</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liped</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
-    body {
-      background: radial-gradient(circle at top, #2d136f, #0a0614 65%);
-      color:#eee9ff;
-      overflow-x:hidden;
-    }
+body{
+  background:radial-gradient(circle at top,#2d136f,#0a0614 65%);
+  color:#eee9ff;
+  overflow-x:hidden;
+}
 
-    nav {
-      position:fixed;
-      top:0; width:100%;
-      padding:18px 40px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      backdrop-filter:blur(16px);
-      background:linear-gradient(120deg, rgba(124,58,237,.25), rgba(79,70,229,.15), rgba(124,58,237,.25));
-      background-size:300% 300%;
-      animation: navGradient 8s ease infinite;
-      border-bottom:1px solid rgba(168,85,247,.25);
-      z-index:100;
-    }
+nav{
+  position:fixed;top:0;width:100%;
+  padding:18px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  backdrop-filter:blur(16px);
+  background:linear-gradient(120deg,rgba(124,58,237,.25),rgba(79,70,229,.15),rgba(124,58,237,.25));
+  background-size:300% 300%;
+  animation:navGradient 8s ease infinite;
+  border-bottom:1px solid rgba(168,85,247,.25);
+  z-index:100;
+}
 
-    @keyframes navGradient {
-      0% { background-position:0% 50%; }
-      50% { background-position:100% 50%; }
-      100% { background-position:0% 50%; }
-    }
+@keyframes navGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 
-    nav h1 {
-      font-size:1.6rem;
-      font-weight:800;
-      background:linear-gradient(90deg,#a855f7,#6366f1);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+nav h1{
+  font-size:1.6rem;font-weight:800;
+  background:linear-gradient(90deg,#a855f7,#6366f1);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-    nav a {
-      color:#cfc6ff;
-      text-decoration:none;
-      margin-left:26px;
-      position:relative;
-    }
+nav a{color:#cfc6ff;text-decoration:none;margin-left:26px}
 
-    nav a::after {
-      content:'';
-      position:absolute;
-      left:0; bottom:-6px;
-      width:0%; height:2px;
-      background:linear-gradient(90deg,#a855f7,#6366f1);
-      transition:.3s;
-    }
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:120px 20px 80px;
+}
 
-    nav a:hover::after { width:100%; }
+.hero h2{
+  font-size:3.8rem;font-weight:800;
+  background:linear-gradient(90deg,#c084fc,#818cf8);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:16px;
+}
 
-    .hero {
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:120px 20px 80px;
-    }
+section{padding:80px 40px}
 
-    .hero h2 {
-      font-size:3.8rem;
-      font-weight:800;
-      background:linear-gradient(90deg,#c084fc,#818cf8);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      margin-bottom:16px;
-      animation: floatText 4s ease-in-out infinite;
-    }
+.search-box{
+  max-width:420px;
+  margin:0 auto 50px;
+}
 
-    @keyframes floatText {
-      0%,100% { transform:translateX(0); }
-      50% { transform:translateX(18px); }
-    }
+.search-box input{
+  width:100%;
+  padding:16px 22px;
+  border-radius:16px;
+  border:1px solid rgba(168,85,247,.35);
+  background:rgba(18,10,34,.85);
+  color:white;
+  font-size:1rem;
+  outline:none;
+}
 
-    .hero p { color:#bfb4ff; max-width:620px; margin:auto; }
+.grid{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:34px;
+}
 
-    .hero button {
-      margin-top:36px;
-      padding:16px 34px;
-      border-radius:18px;
-      border:none;
-      font-weight:700;
-      cursor:pointer;
-      color:white;
-      background:linear-gradient(90deg,#7c3aed,#4f46e5);
-      box-shadow:0 0 35px rgba(124,58,237,.6);
-      transition:.35s;
-    }
+.card{
+  background:rgba(18,10,34,.85);
+  border-radius:22px;
+  padding:30px;
+  border:1px solid rgba(168,85,247,.25);
+  backdrop-filter:blur(18px);
+  transition:.4s;
+}
 
-    .hero button:hover { transform:scale(1.12); box-shadow:0 0 60px rgba(124,58,237,.9); }
+.card:hover{
+  transform:translateY(-14px) scale(1.04);
+  box-shadow:0 40px 80px rgba(124,58,237,.45);
+}
 
-    section { padding:100px 40px; }
+.card h3{font-size:1.7rem;margin-bottom:8px}
+.badge{
+  display:inline-block;margin-bottom:14px;
+  font-size:.8rem;padding:6px 14px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#8b5cf6,#6366f1);
+}
+.card p{color:#d6ceff;font-size:.95rem;margin-bottom:22px}
 
-    .grid {
-      max-width:1300px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:34px;
-    }
+.download-btn{
+  padding:14px 28px;border-radius:16px;
+  background:linear-gradient(120deg,#7c3aed,#4f46e5,#7c3aed);
+  background-size:200% 200%;
+  color:white;border:none;font-weight:700;
+  cursor:pointer;transition:.35s;
+}
 
-    .card {
-      background:rgba(18,10,34,.85);
-      border-radius:22px;
-      padding:30px;
-      border:1px solid rgba(168,85,247,.25);
-      backdrop-filter:blur(18px);
-      transition:.4s;
-    }
+.download-btn:hover{
+  background-position:100% 0;
+  transform:scale(1.12);
+  box-shadow:0 0 35px rgba(124,58,237,.9);
+}
 
-    .card:hover {
-      transform:translateY(-14px) scale(1.04);
-      box-shadow:0 40px 80px rgba(124,58,237,.45);
-    }
+.modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(10px);
+  z-index:200;
+  align-items:center;justify-content:center;
+}
 
-    .card h3 { font-size:1.7rem; margin-bottom:8px; }
+.modal-box{
+  background:#120a22;
+  padding:34px;border-radius:22px;
+  text-align:center;
+  max-width:420px;
+  border:1px solid rgba(168,85,247,.3);
+}
 
-    .badge {
-      display:inline-block;
-      margin-bottom:14px;
-      font-size:.8rem;
-      padding:6px 14px;
-      border-radius:999px;
-      background:linear-gradient(90deg,#8b5cf6,#6366f1);
-    }
+.confirm{
+  display:inline-block;margin-top:20px;
+  padding:14px 28px;
+  background:linear-gradient(90deg,#7c3aed,#4f46e5);
+  color:white;text-decoration:none;
+  border-radius:16px;font-weight:700;
+}
 
-    .card p { color:#d6ceff; font-size:.95rem; margin-bottom:22px; }
+.cancel{margin-top:16px;font-size:.85rem;color:#9e95d1;cursor:pointer}
 
-    .download-btn {
-      padding:14px 28px;
-      border-radius:16px;
-      background:linear-gradient(120deg,#7c3aed,#4f46e5,#7c3aed);
-      background-size:200% 200%;
-      color:white;
-      border:none;
-      font-weight:700;
-      cursor:pointer;
-      transition:.35s;
-    }
-
-    .download-btn:hover {
-      background-position:100% 0;
-      transform:scale(1.12);
-      box-shadow:0 0 35px rgba(124,58,237,.9);
-    }
-
-    .modal {
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.65);
-      backdrop-filter:blur(10px);
-      z-index:200;
-      align-items:center;
-      justify-content:center;
-      animation: fadeIn .3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity:0; }
-      to { opacity:1; }
-    }
-
-    .modal-box {
-      background:#120a22;
-      padding:34px;
-      border-radius:22px;
-      text-align:center;
-      max-width:420px;
-      border:1px solid rgba(168,85,247,.3);
-      animation: pop .35s ease;
-    }
-
-    @keyframes pop {
-      from { transform:scale(.85); opacity:0; }
-      to { transform:scale(1); opacity:1; }
-    }
-
-    .confirm {
-      display:inline-block;
-      margin-top:20px;
-      padding:14px 28px;
-      background:linear-gradient(90deg,#7c3aed,#4f46e5);
-      color:white;
-      text-decoration:none;
-      border-radius:16px;
-      font-weight:700;
-      transition:.3s;
-    }
-
-    .confirm:hover {
-      transform:scale(1.1);
-      box-shadow:0 0 30px rgba(124,58,237,.9);
-    }
-
-    .cancel {
-      margin-top:16px;
-      font-size:.85rem;
-      color:#9e95d1;
-      cursor:pointer;
-      transition:.2s;
-    }
-
-    .cancel:hover { color:white; }
-
-    footer {
-      padding:60px 20px;
-      text-align:center;
-      font-size:.85rem;
-      color:#9e95d1;
-      border-top:1px solid rgba(168,85,247,.15);
-    }
-  </style>
+footer{
+  padding:60px 20px;text-align:center;
+  font-size:.85rem;color:#9e95d1;
+  border-top:1px solid rgba(168,85,247,.15);
+}
+</style>
 </head>
+
 <body>
 
 <nav>
@@ -241,50 +169,45 @@
   <div>
     <h2>Liped Clients</h2>
     <p>Ultra-clean Minecraft clients. Open-source. Performance-focused. Purple aesthetic.</p>
-    <button onclick="document.getElementById('clients').scrollIntoView({behavior:'smooth'})">
-      Explore Clients
-    </button>
   </div>
 </div>
 
 <section id="clients">
-  <div class="grid">
 
-    <div class="card">
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search clients..." oninput="searchClients()">
+  </div>
+
+  <div class="grid" id="clientGrid">
+
+    <div class="card" data-name="volt client">
       <h3>Volt Client</h3>
       <span class="badge">1.21 / 1.21.1 • Open Source</span>
-      <p>Modern performance client with clean UI, animations, and utility modules. Fully open-source and actively maintained.</p>
+      <p>Modern performance client with clean UI and utility modules.</p>
       <button class="download-btn"
-        onclick="openModal('Volt Client','downloads/volt-client.jar')">
-        Download
-      </button>
+        onclick="openModal('Volt Client','downloads/volt-client.jar')">Download</button>
     </div>
 
-    <div class="card">
+    <div class="card" data-name="doomsday injectable">
       <h3>DoomsDay Injectable</h3>
       <span class="badge">PvP Client • Injectable</span>
-      <p>
-        Injectable PvP-focused client built for intense combat, fast clicks,
-        and smooth visuals. Designed to inject cleanly with strong performance.
-      </p>
+      <p>Injectable PvP-focused client built for intense combat.</p>
       <button class="download-btn"
-        onclick="openModal('DoomsDay Injectable','downloads/doomsday-injectable.jar')">
-        Download
-      </button>
+        onclick="openModal('DoomsDay Injectable','downloads/doomsday-injectable.jar')">Download</button>
     </div>
 
-    <div class="card">
+    <div class="card" data-name="violet+">
       <h3>Violet+</h3>
       <span class="badge">Utility</span>
-      <p>Lightweight quality-of-life client with FPS boosts, HUD editing, and stability-focused modules.</p>
-      <button class="download-btn" onclick="soon()">Download</button>
+      <p>Lightweight quality-of-life client.</p>
+      <button class="download-btn" onclick="alert('Coming soon 👀')">Download</button>
     </div>
 
-    <div class="card">
+    <div class="card" data-name="nightfall">
       <h3>NightFall</h3>
       <span class="badge">Experimental</span>
-      <p>Experimental client pushing visuals, shaders, and next-gen animation systems.</p>
-      <button class="download-btn" onclick="soon()">Download</button>
+      <p>Experimental visuals and animation systems.</p>
+      <button class="download-btn" onclick="alert('Coming soon 👀')">Download</button>
     </div>
 
   </div>
@@ -292,8 +215,8 @@
 
 <div id="modal" class="modal">
   <div class="modal-box">
-    <h3 id="modalTitle">Download</h3>
-    <p>You are about to download a hacked client. Are you sure?</p>
+    <h3 id="modalTitle"></h3>
+    <p>You are about to download a Minecraft client. Are you sure?</p>
     <a id="realDownload" download class="confirm">Confirm Download</a>
     <div class="cancel" onclick="closeModal()">Cancel</div>
   </div>
@@ -302,19 +225,29 @@
 <footer>© 2026 Liped — Hosted on GitHub Pages</footer>
 
 <script>
-  function openModal(name,file){
-    document.getElementById('modalTitle').innerText = name;
-    document.getElementById('realDownload').href = file;
-    document.getElementById('modal').style.display = 'flex';
-  }
+function openModal(name,file){
+  modalTitle.innerText=name;
+  realDownload.href=file;
+  modal.style.display='flex';
+}
+function closeModal(){modal.style.display='none';}
 
-  function closeModal(){
-    document.getElementById('modal').style.display = 'none';
-  }
+function searchClients(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const grid=document.getElementById('clientGrid');
+  const cards=[...grid.children];
 
-  function soon(){
-    alert('Download coming soon 👀');
-  }
+  cards.sort((a,b)=>{
+    const aMatch=a.dataset.name.includes(q);
+    const bMatch=b.dataset.name.includes(q);
+    return bMatch-aMatch;
+  });
+
+  cards.forEach(c=>{
+    c.style.display = q==='' || c.dataset.name.includes(q) ? 'block' : 'none';
+    grid.appendChild(c);
+  });
+}
 </script>
 
 </body>
