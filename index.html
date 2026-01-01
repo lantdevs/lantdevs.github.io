@@ -100,27 +100,35 @@ section{padding:80px 40px}
   gap:34px;
 }
 
-/* CARD + SEARCH ANIMATIONS */
+/* CARD + REAL ANIMATIONS */
 .card{
   background:rgba(18,10,34,.85);
   border-radius:22px;
   padding:30px;
   border:1px solid rgba(168,85,247,.25);
   backdrop-filter:blur(18px);
-  transition:transform .45s ease, opacity .45s ease;
+  transition:
+    transform .45s cubic-bezier(.4,0,.2,1),
+    opacity .45s cubic-bezier(.4,0,.2,1);
 }
 
-/* matched cards slide RIGHT */
+/* matched → slide RIGHT */
 .card.match{
-  transform:translateX(40px);
+  transform:translateX(60px);
   opacity:1;
 }
 
-/* non-matching fade + slide */
+/* non-matched → fade + slide LEFT */
 .card.hidden{
-  transform:translateX(-40px);
+  transform:translateX(-60px);
   opacity:0;
   pointer-events:none;
+}
+
+/* reset state */
+.card.reset{
+  transform:translateX(0);
+  opacity:1;
 }
 
 .card h3{font-size:1.7rem;margin-bottom:8px}
@@ -218,7 +226,7 @@ footer{
 
   <div class="grid" id="clientGrid">
 
-    <div class="card" data-name="volt client" data-order="1">
+    <div class="card reset" data-name="volt client">
       <h3>Volt Client</h3>
       <span class="badge">Open Source</span>
       <p>Modern performance client.</p>
@@ -226,7 +234,7 @@ footer{
         onclick="openModal('Volt Client','downloads/volt-client.jar')">Download</button>
     </div>
 
-    <div class="card" data-name="doomsday injectable" data-order="2">
+    <div class="card reset" data-name="doomsday injectable">
       <h3>DoomsDay Injectable</h3>
       <span class="badge">PvP • Injectable</span>
       <p>Injectable PvP client.</p>
@@ -234,14 +242,14 @@ footer{
         onclick="openModal('DoomsDay Injectable','downloads/doomsday-injectable.jar')">Download</button>
     </div>
 
-    <div class="card" data-name="violet+" data-order="3">
+    <div class="card reset" data-name="violet+">
       <h3>Violet+</h3>
       <span class="badge">Utility</span>
       <p>Quality-of-life client.</p>
       <button class="download-btn" onclick="alert('Coming soon 👀')">Download</button>
     </div>
 
-    <div class="card" data-name="nightfall" data-order="4">
+    <div class="card reset" data-name="nightfall">
       <h3>NightFall</h3>
       <span class="badge">Experimental</span>
       <p>Experimental visuals.</p>
@@ -276,31 +284,17 @@ function closeModal(){modal.style.display='none';}
 
 function searchClients(){
   const q = search.value.toLowerCase();
-  const cards = [...clientGrid.children];
+  const cards = document.querySelectorAll('.card');
 
-  cards.forEach(c=>{
-    c.classList.remove('hidden','match');
-  });
+  cards.forEach(card=>{
+    card.classList.remove('match','hidden','reset');
 
-  if(q === ''){
-    cards
-      .sort((a,b)=>a.dataset.order-b.dataset.order)
-      .forEach(c=>clientGrid.appendChild(c));
-    return;
-  }
-
-  cards.sort((a,b)=>{
-    const am = a.dataset.name.includes(q);
-    const bm = b.dataset.name.includes(q);
-    return bm - am;
-  });
-
-  cards.forEach(c=>{
-    if(c.dataset.name.includes(q)){
-      c.classList.add('match');
-      clientGrid.appendChild(c);
-    }else{
-      c.classList.add('hidden');
+    if(q === ''){
+      card.classList.add('reset');
+    } else if(card.dataset.name.includes(q)){
+      card.classList.add('match');
+    } else {
+      card.classList.add('hidden');
     }
   });
 }
